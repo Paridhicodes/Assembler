@@ -1,0 +1,17 @@
+---------------------Label Rule-----------------------
+
+1. The Label shall be alphanumeric in nature of the format 'L' followed by a number.
+2. The number can contain any number of digits.
+3. The number should be greater than or equal to one.
+
+--------------------Operand Rule-----------------------
+
+1. The operand must contain only letters.
+2. The letters can be capital letters ranging from A-Z and their combination.
+
+-------------------Instruction Rule---------------------
+
+1. There will be a label separated by the pneumonic by a space. The pneumonic will be followed by a space succeeded by the operand.
+2. This space is standard and any violation of the format shall show errors.
+
+
