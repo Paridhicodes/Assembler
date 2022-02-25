@@ -196,12 +196,12 @@ public class Main {
             return false;
         }
 
-        String numStr=label.substring(1);
-        int locNum=Integer.parseInt(numStr);
-        if(locNum<=0){
+        char ch2=label.charAt(1);
+        if(ch2=='0'){
             System.out.println("The number following L must be greater than or equal to one!");
             return false;
         }
+
         for(int i=1;i<label.length();i++){
             char ch=label.charAt(i);
             if(!Character.isDigit(ch)){
