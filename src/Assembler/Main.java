@@ -1,5 +1,6 @@
 package Assembler;
 
+import java.math.BigInteger;
 import java.util.*;
 import java.io.*;
 
@@ -195,6 +196,12 @@ public class Main {
             return false;
         }
 
+        String numStr=label.substring(1);
+        int locNum=Integer.parseInt(numStr);
+        if(locNum<=0){
+            System.out.println("The number following L must be greater than or equal to one!");
+            return false;
+        }
         for(int i=1;i<label.length();i++){
             char ch=label.charAt(i);
             if(!Character.isDigit(ch)){
