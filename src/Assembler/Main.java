@@ -1,6 +1,6 @@
 package Assembler;
 
-import java.math.BigInteger;
+
 import java.util.*;
 import java.io.*;
 
@@ -129,6 +129,44 @@ public class Main {
             //-----------------Printing the tables-------------------
 
             printTables(labels,operands,pneumonic);
+
+            //-----------------Pass 2 Assembler----------------------
+            inputLine = null;
+            reader = null;
+            try{
+                reader = new BufferedReader(new FileReader("input_instructions.txt"));
+                while ((inputLine = reader.readLine()) != null) {
+                    String[] arr = inputLine.split(" ");
+
+
+                    int len = arr.length;
+                    String str="";
+                    if(len>1){
+                        if(len==2){
+                            str=str+toBinary(labels.get(arr[0]))+" "+hm.get(arr[1]);
+                        }
+
+                        if(len==3){
+                            str=str+toBinary(labels.get(arr[0]))+" "+hm.get(arr[1])+" "+toBinary(operands.get(arr[2]));
+                        }
+
+                        System.out.println(str);
+                    }
+                }
+            }
+            catch (FileNotFoundException ex) {
+                System.out.println("file was not found: " + ex);
+            }
+            catch (IOException ex) {
+                System.out.println("io error: " + ex);
+            }
+            finally {
+                try {
+                    if( reader != null ) reader.close();
+                } catch (IOException ex) {
+                    System.out.println("error closing file " + ex);
+                }
+            }
         }
         catch (FileNotFoundException ex) {
             System.out.println("file was not found: " + ex);
@@ -238,5 +276,23 @@ public class Main {
             System.out.println(key+"\t\t  |\t\t "+pneumonic.get(key));
         }
         System.out.println("------------------------\n");
+    }
+
+    //--------------------------Decimal to Binary---------------------------
+    public static String toBinary(int decimal){
+        if(decimal==0){
+            return "0";
+        }
+        int []binary = new int[40];
+        int index = 0;
+        while(decimal > 0){
+            binary[index++] = decimal%2;
+            decimal = decimal/2;
+        }
+        StringBuilder sb= new StringBuilder();
+        for(int i = index-1;i >= 0;i--){
+            sb.append(binary[i]);
+        }
+        return sb.toString();
     }
 }
