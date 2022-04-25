@@ -34,7 +34,6 @@ public class Main {
         HashMap<String,Integer> labels=new HashMap<>();
         HashMap<String,Integer> operands=new HashMap<>();
         HashMap<String,String> pneumonic=new HashMap<>();
-
         HashSet<String> operandTracker=new HashSet<>();
 
         //----------------Reading a file-----------------
@@ -96,7 +95,6 @@ public class Main {
                         System.out.println("Spurious operand!");
                         return;
                     }
-
 
                     boolean res1=labelCheck(str1);
                     if(!res1){
